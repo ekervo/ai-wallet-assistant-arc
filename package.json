@@ -1,11 +1,22 @@
 {
-  "name": "project",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
+  },
+  "dependencies": {
+    "next": "^16.2.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@circle-fin/app-kit": "latest",
+    "@circle-fin/adapter-viem-v2": "latest",
+    "openai": "latest",
+    "viem": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
   }
 }

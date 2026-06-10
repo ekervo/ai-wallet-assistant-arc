@@ -569,3 +569,270 @@ textarea {
     font-size: 56px;
   }
 }
+
+.ubTabs {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.ubTabs button {
+  flex: 1;
+  cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(148, 163, 184, 0.08);
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 10px;
+  font-weight: 900;
+}
+
+.ubTabs button.activeTab {
+  background: linear-gradient(135deg, #67e8f9, #a78bfa);
+  color: #020617;
+}
+
+.ubForm {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ubForm label {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ubForm input,
+.ubForm select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: #f8fafc;
+  outline: none;
+}
+
+.confirmInput {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #171717;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 0;
+}
+
+.confirmInput::placeholder {
+  color: rgba(23, 23, 23, 0.45);
+}
+
+select.confirmInput {
+  cursor: pointer;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: 85%;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px solid #111;
+}
+
+.message span {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.message p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* USER */
+
+.message.user {
+  align-self: flex-end;
+  background: #b7f34b;
+  color: #111;
+  box-shadow: 4px 4px 0 #111;
+}
+
+.message.user span {
+  color: #2f4f00;
+}
+
+/* AI */
+
+.message.assistant {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #111;
+}
+
+.message.assistant span {
+  color: #666;
+}
+
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.quickActions button {
+  background: linear-gradient(
+    90deg,
+    #69d7f7 0%,
+    #a28cf6 100%
+  );
+
+  color: #111;
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.quickActions button:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.quickActions button:active {
+  transform: scale(0.98);
+}
+
+/* Chat panel fixed height */
+.consolePanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 760px;
+}
+
+/* Scrollable messages */
+.messages {
+  height: 460px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 8px 10px 8px 0;
+  margin-top: 18px;
+}
+
+/* Scrollbar */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #b7ff5e;
+  border-radius: 999px;
+  border: 2px solid #111;
+}
+
+/* Chat bubbles */
+.message {
+  max-width: 82%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 2px solid #111;
+  word-break: break-word;
+}
+
+.message span {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.message p {
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #b7ff5e;
+  color: #111;
+  box-shadow: 5px 5px 0 #111;
+}
+
+.message.user span {
+  color: #2f4f00;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #111;
+  box-shadow: none;
+}
+
+.message.assistant span {
+  color: #666;
+}
+
+/* Quick action buttons */
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.quickActions button {
+  background: linear-gradient(90deg, #69d7f7 0%, #a28cf6 100%);
+  color: #111;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quickActions button:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.quickActions button:active {
+  transform: scale(0.98);
+}
+
+/* Keep composer at bottom */
+.composer {
+  margin-top: auto;
+}

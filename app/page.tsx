@@ -19,7 +19,7 @@ const capabilities = [
   },
   {
     title: "Unified Balance",
-    status: "Future",
+    status: "Live",
     desc: "Combine USDC balances across chains into one spendable balance.",
   },
 ];
@@ -113,12 +113,13 @@ export default function Home() {
       <section className="supportedNetworks">
         <p className="eyebrow">Supported Bridge Networks</p>
         <div className="networkRow">
-          <span>Arc_Testnet</span>
-          <span>Arbitrum_Sepolia</span>
-          <span>Avalanche_Fuji</span>
-          <span>Base_Sepolia</span>
-          <span>Ethereum_Sepolia</span>
-          <span>Polygon_Amoy_Testnet</span>
+          <span>Arc Testnet</span>
+          <span>Arbitrum Sepolia</span>
+          <span>Avalanche Fuji</span>
+          <span>Base Sepolia</span>
+          <span>Ethereum Sepolia</span>
+          <span>Polygon Amoy Testnet</span>
+          <span>Optimism Sepolia</span>
         </div>
       </section>
 

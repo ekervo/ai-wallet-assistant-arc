@@ -5,11 +5,10 @@ import { createViemAdapterFromProvider } from "@circle-fin/adapter-viem-v2";
 
 export const kit = new AppKit();
 
-declare global {
-  interface Window {
-    ethereum?: any;
-  }
-}
+const getEthereum = () => {
+  if (typeof window === "undefined") return null;
+  return (window as any).ethereum;
+};
 
 export const ARC_TESTNET = {
   id: 5042002,
@@ -33,23 +32,25 @@ const ARC_TESTNET_PARAMS = {
 };
 
 export async function switchToArcTestnet() {
-  if (!window.ethereum) {
+  const ethereum = getEthereum();
+
+  if (!ethereum) {
     throw new Error("MetaMask or Rabby wallet not found.");
   }
 
   try {
-    await window.ethereum.request({
+    await ethereum.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: ARC_TESTNET.hex }],
     });
   } catch (error: any) {
     if (error?.code === 4902) {
-      await window.ethereum.request({
+      await ethereum.request({
         method: "wallet_addEthereumChain",
         params: [ARC_TESTNET_PARAMS],
       });
 
-      await window.ethereum.request({
+      await ethereum.request({
         method: "wallet_switchEthereumChain",
         params: [{ chainId: ARC_TESTNET.hex }],
       });
@@ -62,18 +63,19 @@ export async function switchToArcTestnet() {
 }
 
 export async function connectWallet() {
-  if (!window.ethereum) {
+  const ethereum = getEthereum();
+
+  if (!ethereum) {
     throw new Error("MetaMask or Rabby wallet not found.");
   }
 
-  const accounts = await window.ethereum.request({
+  const accounts = await ethereum.request({
     method: "eth_requestAccounts",
   });
 
   try {
     await switchToArcTestnet();
   } catch {
-    // Không chặn connect nếu MetaMask đang lỗi add/switch RPC
     console.log("Please switch to Arc Network Testnet manually.");
   }
 
@@ -81,10 +83,11 @@ export async function connectWallet() {
 }
 
 export async function getConnectedAddress() {
-  if (typeof window === "undefined") return "";
-  if (!window.ethereum) return "";
+  const ethereum = getEthereum();
 
-  const accounts = await window.ethereum.request({
+  if (!ethereum) return "";
+
+  const accounts = await ethereum.request({
     method: "eth_accounts",
   });
 
@@ -92,11 +95,13 @@ export async function getConnectedAddress() {
 }
 
 export async function createAdapter() {
-  if (!window.ethereum) {
+  const ethereum = getEthereum();
+
+  if (!ethereum) {
     throw new Error("MetaMask or Rabby wallet not found.");
   }
 
-  return createViemAdapterFromProvider({
-    provider: window.ethereum,
+  return await createViemAdapterFromProvider({
+    provider: ethereum,
   });
 }
